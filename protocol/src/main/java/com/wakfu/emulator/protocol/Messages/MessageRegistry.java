@@ -1,16 +1,18 @@
+// Fichier à modifier: protocol/src/main/java/com/wakfu/emulator/protocol/MessageRegistry.java
 package com.wakfu.emulator.protocol;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
+import com.wakfu.emulator.protocol.messages.VersionMessage;
 
 public class MessageRegistry {
     private static final Map<Integer, Supplier<Message>> messageFactories = new HashMap<>();
-    
+
     public static void registerMessage(int id, Supplier<Message> factory) {
         messageFactories.put(id, factory);
     }
-    
+
     public static Message createMessage(int id) {
         Supplier<Message> factory = messageFactories.get(id);
         if (factory == null) {
@@ -18,10 +20,10 @@ public class MessageRegistry {
         }
         return factory.get();
     }
-    
-    // Initialiser les messages connus
+
     static {
-        // TODO: Enregistrer les messages connus
-        // Exemple : registerMessage(1, VersionMessage::new);
+        // Enregistrer les messages connus
+        registerMessage(1, VersionMessage::new);
+        registerMessage(2, LoginRequestMessage::new);
+        registerMessage(3, LoginResultMessage::new);
     }
-}
