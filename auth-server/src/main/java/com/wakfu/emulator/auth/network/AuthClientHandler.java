@@ -27,10 +27,11 @@ public class AuthClientHandler extends SimpleChannelInboundHandler<Message> {
         // Traiter les différents types de messages
         if (msg instanceof VersionMessage) {
             handleVersionMessage(ctx, (VersionMessage) msg);
+        } else if (msg instanceof LoginRequestMessage) {
+            handleLoginRequest(ctx, (LoginRequestMessage) msg);
         } else {
             logger.warn("Type de message non géré: {}", msg.getClass().getSimpleName());
         }
-    }
 
     // Ajoutez la gestion du message de connexion:
 

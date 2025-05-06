@@ -3,6 +3,9 @@ package com.wakfu.emulator.protocol.messages;
 
 import com.wakfu.emulator.protocol.Message;
 import io.netty.buffer.ByteBuf;
+import com.wakfu.emulator.protocol.messages.VersionMessage;
+import com.wakfu.emulator.protocol.messages.LoginRequestMessage;
+import com.wakfu.emulator.protocol.messages.LoginResultMessage;
 
 public class LoginResultMessage extends Message {
     private boolean success;

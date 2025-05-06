@@ -1,5 +1,5 @@
 // Fichier à modifier: auth-server/src/main/java/com/wakfu/emulator/auth/AuthServer.java
-package com.wakfu.emulator.auth.network;
+package com.wakfu.emulator.auth;
 
 import com.wakfu.emulator.database.AccountManager;
 import com.wakfu.emulator.database.DatabaseManager;
@@ -17,29 +17,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class AuthServer {
-    private static final Logger logger = LogManager.getLogger(AuthServer.class);
-
-    private AuthConfig config;
-    private DatabaseManager databaseManager;
-    private AccountManager accountManager;
-
-    private static AuthServer instance;
-
-    public static AuthServer getInstance() {
-        return instance;
-    }
-
-    public AccountManager getAccountManager() {
-        return accountManager;
-    }
-
-    // Et dans la méthode main:
+    // Une seule méthode main
     public static void main(String[] args) {
         logger.info("Démarrage du serveur d'authentification Wakfu...");
 
         instance = new AuthServer();
         instance.start();
     }
+
 
     public static void main(String[] args) {
         logger.info("Démarrage du serveur d'authentification Wakfu...");
